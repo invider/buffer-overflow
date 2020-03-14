@@ -521,7 +521,6 @@ function evoBoot(dt) {
     }
 }
 
-
 function evo(dt) {
     this.evoBoot(dt)
     //if (!this.canvasFixed) return

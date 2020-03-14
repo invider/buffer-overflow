@@ -247,10 +247,9 @@ var $ = <any>{
                             name:  1,
             },
         },
-            square:  {
-                    draw:  function(): any {},
-                    name:  1,
-        },
+            Body:  function(): any {},
+            Bot:  function(): any {},
+            World:  function(): any {},
     },
     lib:  {
             hud:  {
@@ -362,14 +361,136 @@ var $ = <any>{
             },
                     name:  1,
         },
+            bind:  {
+                    indexKeys:  function(): any {},
+                    init:  function(): any {},
+                    keyboard:  {
+            },
+                    keyMap:  {
+                            KeyW:  {
+                },
+                            KeyA:  {
+                                    id:  1,
+                },
+                            KeyS:  {
+                                    id:  1,
+                },
+                            KeyD:  {
+                                    id:  1,
+                },
+                            KeyE:  {
+                                    id:  1,
+                },
+                            KeyQ:  {
+                                    id:  1,
+                },
+                            Space:  {
+                                    id:  1,
+                },
+                            ArrowUp:  {
+                                    player:  1,
+                },
+                            ArrowLeft:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            ArrowDown:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            ArrowRight:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            PageDown:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            PageUp:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            ShiftRight:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            KeyK:  {
+                                    player:  1,
+                },
+                            KeyH:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            KeyJ:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            KeyL:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            BracketRight:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            BracketLeft:  {
+                                    id:  1,
+                                    player:  1,
+                },
+                            Enter:  {
+                                    id:  1,
+                                    player:  1,
+                },
+            },
+                    padMap:  {
+            },
+                    name:  1,
+        },
             style:  {
                     background:  1,
+                    teams:  {
+            },
                     name:  1,
         },
     },
     lab:  {
             background:  {
                     draw:  function(): any {},
+                    name:  1,
+        },
+            collider:  {
+                    touch:  function(): any {},
+                    evo:  function(): any {},
+                    name:  1,
+        },
+            control:  {
+                    pad:  {
+                            activate:  function(): any {},
+                            isActive:  function(): any {},
+                            evo:  function(): any {},
+                            USAGE_TIMEOUT:  1,
+                            bind:  {
+                },
+                            lastUsage:  {
+                },
+                            name:  1,
+            },
+                    player:  {
+                            bind:  function(): any {},
+                            act:  function(): any {},
+                            stop:  function(): any {},
+                            evo:  function(): any {},
+                            ON:  1,
+                            ctrl:  {
+                },
+                            targetMap:  {
+                },
+                            name:  1,
+            },
+        },
+            status:  {
+                    draw:  function(): any {},
+                    Z:  1,
                     name:  1,
         },
     },
@@ -585,10 +706,9 @@ var dna = <any>{
                     name:  1,
         },
     },
-    square:  {
-            draw:  function(): any {},
-            name:  1,
-    },
+    Body:  function(): any {},
+    Bot:  function(): any {},
+    World:  function(): any {},
 }
 var env = <any>{
     hud:  {
@@ -632,14 +752,136 @@ var env = <any>{
         },
             name:  1,
     },
+    bind:  {
+            indexKeys:  function(): any {},
+            init:  function(): any {},
+            keyboard:  {
+        },
+            keyMap:  {
+                    KeyW:  {
+            },
+                    KeyA:  {
+                            id:  1,
+            },
+                    KeyS:  {
+                            id:  1,
+            },
+                    KeyD:  {
+                            id:  1,
+            },
+                    KeyE:  {
+                            id:  1,
+            },
+                    KeyQ:  {
+                            id:  1,
+            },
+                    Space:  {
+                            id:  1,
+            },
+                    ArrowUp:  {
+                            player:  1,
+            },
+                    ArrowLeft:  {
+                            id:  1,
+                            player:  1,
+            },
+                    ArrowDown:  {
+                            id:  1,
+                            player:  1,
+            },
+                    ArrowRight:  {
+                            id:  1,
+                            player:  1,
+            },
+                    PageDown:  {
+                            id:  1,
+                            player:  1,
+            },
+                    PageUp:  {
+                            id:  1,
+                            player:  1,
+            },
+                    ShiftRight:  {
+                            id:  1,
+                            player:  1,
+            },
+                    KeyK:  {
+                            player:  1,
+            },
+                    KeyH:  {
+                            id:  1,
+                            player:  1,
+            },
+                    KeyJ:  {
+                            id:  1,
+                            player:  1,
+            },
+                    KeyL:  {
+                            id:  1,
+                            player:  1,
+            },
+                    BracketRight:  {
+                            id:  1,
+                            player:  1,
+            },
+                    BracketLeft:  {
+                            id:  1,
+                            player:  1,
+            },
+                    Enter:  {
+                            id:  1,
+                            player:  1,
+            },
+        },
+            padMap:  {
+        },
+            name:  1,
+    },
     style:  {
             background:  1,
+            teams:  {
+        },
             name:  1,
     },
 }
 var lab = <any>{
     background:  {
             draw:  function(): any {},
+            name:  1,
+    },
+    collider:  {
+            touch:  function(): any {},
+            evo:  function(): any {},
+            name:  1,
+    },
+    control:  {
+            pad:  {
+                    activate:  function(): any {},
+                    isActive:  function(): any {},
+                    evo:  function(): any {},
+                    USAGE_TIMEOUT:  1,
+                    bind:  {
+            },
+                    lastUsage:  {
+            },
+                    name:  1,
+        },
+            player:  {
+                    bind:  function(): any {},
+                    act:  function(): any {},
+                    stop:  function(): any {},
+                    evo:  function(): any {},
+                    ON:  1,
+                    ctrl:  {
+            },
+                    targetMap:  {
+            },
+                    name:  1,
+        },
+    },
+    status:  {
+            draw:  function(): any {},
+            Z:  1,
             name:  1,
     },
 }
