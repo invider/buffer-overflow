@@ -25,13 +25,13 @@ class Body {
     evo(dt) {
         // warp the world
         const w = lab.world
-        if (w.gx(this.x) < 0) this.x = w.lx(rx(1))
-        if (w.gx(this.x) > rx(1)) this.x = w.lx(0)
-        if (w.gy(this.y) < 0) this.y = w.ly(ry(1))
-        if (w.gy(this.y) > ry(1)) this.y = w.ly(0)
+        if (this.x < 0) this.x = w.w
+        if (this.x > w.w) this.x = 0
+        if (this.y < 0) this.y = w.h
+        if (this.y > w.h) this.y = 0
     }
 
     kill() {
-        this.__.detach(this)
+        this.dead = true
     }
 }

@@ -1,3 +1,30 @@
+
+// optimized attach version
+function attach(e) {
+    let islot = -1
+    for (let i = 0; i < this._ls.length; i++) {
+        if (this._ls[i].dead) {
+            islot = i
+            break
+        }
+    }
+
+    if (islot >= 0) {
+        this._ls[islot] = e
+    } else {
+        this._ls.push(e)
+    }
+
+    if (e.name) {
+        this._dir[e.name] = e
+        this[e.name] = e
+    }
+    e.__ = this
+
+    this.onAttached(e, e.name, this)
+    if (isFun(e.init)) e.init()
+}
+
 class World extends dna.SlideCamera {
 
     constructor(st) {
@@ -8,6 +35,10 @@ class World extends dna.SlideCamera {
         this.touch('mob')
         this.touch('fx')
         this.touch('ghost')
+
+        // inject optimized attach
+        this.mob.attach = attach
+        this.fx.attach = attach
     }
 
 	lx(x) {
@@ -132,6 +163,10 @@ class World extends dna.SlideCamera {
         ctx.translate(sw2, sh2)
         ctx.scale(this.scale, this.scale);
         ctx.translate(-this.x, -this.y)
+
+        lineWidth(1)
+        stroke('#505054')
+        rect(0, 0, this.w, this.h)
 
         this.drawElements(this.mob._ls, vp)
         this.drawElements(this.fx._ls, vp)

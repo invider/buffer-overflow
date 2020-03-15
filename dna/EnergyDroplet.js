@@ -1,12 +1,10 @@
 // @depends(dna/Body)
 
-let id = 0
 class EnergyDroplet extends dna.Body {
 
     constructor(st) {
         super(st)
         this.solid = true
-        this.name = 'drop' + (++id)
         this.charge = 25 + RND(75)
         this.r = 4
     }
