@@ -39,12 +39,13 @@ function stop(action, player) {
     else player = player - 1
 
     if (ctrl[player]) {
-        ctrl[player][action] = OFF
-
-        const target = targetMap[player]
-        if (target && target.activate) {
-            target.activate(0)
+        if (ctrl[player][action]) {
+            const target = targetMap[player]
+            if (target && target.activate) {
+                target.deactivate(action + 1)
+            }
         }
+        ctrl[player][action] = OFF
     }
 }
 

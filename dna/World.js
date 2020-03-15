@@ -4,6 +4,11 @@ class World extends dna.SlideCamera {
         super(st)
     }
 
+    init() {
+        this.touch('mob')
+        this.touch('fx')
+    }
+
 	lx(x) {
 		return (x-ctx.width/2)/this.scale + this.x
 	}
@@ -93,6 +98,21 @@ class World extends dna.SlideCamera {
         if (this.target) this.follow(dt)
     }
 
+    drawElements(ls, vp) {
+        for (let i = 0; i < ls.length; i++) {
+            const e = ls[i]
+            if (e.draw && !e.dead && !e.hidden) {
+                // culling
+                if (e.x+e.r >= vp[0]
+                        && e.x-e.r <= vp[2]
+                        && e.y+e.r >= vp[1]
+                        && e.y-e.r <= vp[3]) {
+                    e.draw()
+                }
+            }
+        }
+    }
+
     draw() {
         ctx.save()
         let sw = ctx.width
@@ -105,17 +125,8 @@ class World extends dna.SlideCamera {
         ctx.scale(this.scale, this.scale);
         ctx.translate(-this.x, -this.y)
 
-        this._ls.forEach( e => {
-            if (e.draw && !e.dead && !e.hidden) {
-                // culling
-                if (e.x+e.r >= vp[0]
-                        && e.x-e.r <= vp[2]
-                        && e.y+e.r >= vp[1]
-                        && e.y-e.r <= vp[3]) {
-                    e.draw()
-                }
-            }
-        })
+        this.drawElements(this.mob._ls, vp)
+        this.drawElements(this.fx._ls, vp)
 
         ctx.restore()
     }

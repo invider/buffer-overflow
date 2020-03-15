@@ -8,13 +8,13 @@ function setup() {
     })
     //world.zoom(1)
 
-    const b1 = world.spawn(dna.Bot, {
+    const b1 = world.mob.spawn(dna.Bot, {
         team: 1,
         x: 0, 
         y: 0,
     })
 
-    const b2 = world.spawn(dna.Bot, {
+    const b2 = world.mob.spawn(dna.Bot, {
         x: 20,
         y: 20,
     })
