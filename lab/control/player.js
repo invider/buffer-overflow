@@ -6,12 +6,17 @@ const ctrl = []
 const targetMap = []
 
 function bind(player, target) {
+    target.player = player
+    player = player - 1
+
     targetMap[player] = target
     if (!ctrl[player]) ctrl[player] = []
 }
 
 function act(action, player) {
     if (!player) player = 0
+    else player = player - 1
+
     if (ctrl[player] && !ctrl[player][action]) {
         ctrl[player][action] = ON
 
@@ -24,6 +29,8 @@ function act(action, player) {
 
 function stop(action, player) {
     if (!player) player = 0
+    else player = player - 1
+
     if (ctrl[player]) {
         ctrl[player][action] = OFF
     }

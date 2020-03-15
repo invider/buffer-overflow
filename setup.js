@@ -19,7 +19,7 @@ function setup() {
         y: 20,
     })
 
-    lab.control.player.bind(0, b1)
     lab.control.player.bind(1, b1)
     lab.control.player.bind(2, b1)
+    lab.control.player.bind(3, b1)
 }

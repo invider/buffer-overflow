@@ -318,6 +318,10 @@ var $ = <any>{
                     name:  1,
         },
             sfx:  function(): any {},
+            arch:  {
+                    Chip:  function(): any {},
+                    CPU:  function(): any {},
+        },
     },
     env:  {
             hud:  {
@@ -661,6 +665,10 @@ var lib = <any>{
             name:  1,
     },
     sfx:  function(): any {},
+    arch:  {
+            Chip:  function(): any {},
+            CPU:  function(): any {},
+    },
 }
 var res = <any>{
 }
