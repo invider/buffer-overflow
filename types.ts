@@ -481,6 +481,7 @@ var $ = <any>{
             },
                     player:  {
                             bind:  function(): any {},
+                            target:  function(): any {},
                             act:  function(): any {},
                             stop:  function(): any {},
                             evo:  function(): any {},
@@ -876,6 +877,7 @@ var lab = <any>{
         },
             player:  {
                     bind:  function(): any {},
+                    target:  function(): any {},
                     act:  function(): any {},
                     stop:  function(): any {},
                     evo:  function(): any {},

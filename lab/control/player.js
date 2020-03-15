@@ -13,6 +13,13 @@ function bind(player, target) {
     if (!ctrl[player]) ctrl[player] = []
 }
 
+function target(player) {
+    if (!player) player = 0
+    else player = player - 1
+
+    return targetMap[player]
+}
+
 function act(action, player) {
     if (!player) player = 0
     else player = player - 1
@@ -22,7 +29,7 @@ function act(action, player) {
 
         const target = targetMap[player]
         if (target && target.activate) {
-            target.activate(action)
+            target.activate(action + 1)
         }
     }
 }
@@ -33,6 +40,11 @@ function stop(action, player) {
 
     if (ctrl[player]) {
         ctrl[player][action] = OFF
+
+        const target = targetMap[player]
+        if (target && target.activate) {
+            target.activate(0)
+        }
     }
 }
 
@@ -42,7 +54,7 @@ function evo(dt) {
         for (let a = 0; a < ctrl[p].length; a++) {
             if (ctrl[p][a]) {
                 const target = targetMap[p]
-                if (target) target.act(a, dt)
+                if (target && target.act) target.act(a + 1, dt)
             }
         }
     }

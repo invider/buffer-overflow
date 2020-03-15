@@ -1,0 +1,8 @@
+# MacOS X
+.DS_Store
+
+# collider.jam artifacts
+types.ts
+*.out
+dist
+

@@ -5,6 +5,8 @@ const defaults = {
     solid: true,
     team: 0,
     timer: 0,
+    receiver: 5,
+    transponder: 0,
     speed: 120,
 }
 
@@ -16,17 +18,9 @@ class Bot extends dna.Body {
         super(st, augment( augment({}, df), defaults) )
         this.name = 'bot' + (++id)
         this.fq = .8 + rnd(.4)
+        this.charger = 2 - this.fq
         this.cpu = new lib.arch.CPU()
         this.cpu.bot = this
-    }
-
-    act(id, dt) {
-        switch(id) {
-            case 0: this.y -= this.speed * dt; break;
-            case 1: this.x -= this.speed * dt; break;
-            case 2: this.y += this.speed * dt; break;
-            case 3: this.x += this.speed * dt; break;
-        }
     }
 
     hit(source) {
@@ -42,13 +36,43 @@ class Bot extends dna.Body {
         else this.cpu.next()
     }
 
+    act(dir, dt) {
+        switch(dir) {
+            case 1: this.y -= this.speed * dt; break;
+            case 2: this.x -= this.speed * dt; break;
+            case 3: this.y += this.speed * dt; break;
+            case 4: this.x += this.speed * dt; break;
+        }
+        this.dir = dir
+    }
+
+    charge(dt) {
+        if (this.dir) {
+            // transfer to receiver
+            let q = this.charger * dt
+            if (this.transponder < q) q = this.transponder
+            this.transponder -= q
+            this.receiver += q
+
+        } else {
+            // transfer to transponder
+            let q = this.charger * dt
+            if (this.receiver < q) q = this.receiver
+            this.receiver -= q
+            this.transponder += q
+        }
+    }
+
     evo(dt) {
         super.evo(dt)
+        this.charge(dt)
 
         this.timer -= dt
         if (this.timer <= 0) {
             this.next()
             this.timer = this.fq
         }
+
+        this.dir = 0
     }
 }

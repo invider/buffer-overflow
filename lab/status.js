@@ -10,6 +10,14 @@ function draw() {
             + round(target.x)
             + ':'
             + round(target.y)
+    } else {
+        const t = lab.control.player.target()
+        if (t) {
+            const receiver = round(t.receiver*10)/10
+            const transponder = round(t.transponder*10)/10
+            label = `${t.name} @${round(t.x)}:${round(t.y)}`
+                + ` - ${receiver}:${transponder}`
+        }
     }
 
     font('32px coolville')
