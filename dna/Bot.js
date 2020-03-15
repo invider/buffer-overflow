@@ -51,7 +51,7 @@ class Bot extends dna.Body {
     }
 
     charge(dt) {
-        if (this.dir) {
+        if (this.moveFlag) {
             // transfer to receiver
             let q = this.charger * dt
             if (this.transponder < q) q = this.transponder
@@ -69,7 +69,7 @@ class Bot extends dna.Body {
 
     evo(dt) {
         super.evo(dt)
-        this.act(this.dir, dt)
+        if (!this.player) this.act(this.dir, dt)
         this.charge(dt)
 
         this.timer -= dt

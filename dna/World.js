@@ -84,6 +84,8 @@ class World extends dna.SlideCamera {
     }
 
     evo(dt) {
+        if (this.paused) return
+
         this._ls.forEach( e => {
             if (e.evo && !e.dead && !e.paused) e.evo(dt)
         })
