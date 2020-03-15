@@ -7,7 +7,7 @@ const defaults = {
     timer: 0,
     receiver: 10,
     transponder: 100,
-    speed: 40,
+    speed: 70,
 }
 
 let id = 0
@@ -19,6 +19,7 @@ class Bot extends dna.Body {
         this.name = 'bot' + (++id)
         this.fq = .8 + rnd(.4)
         this.charger = env.tune.chargePower
+        this.recharger = env.tune.rechargePower
         this.cpu = new lib.arch.CPU()
         this.cpu.bot = this
     }
@@ -128,7 +129,7 @@ class Bot extends dna.Body {
     charge(dt) {
         if (this.moveFlag) {
             // transfer to receiver
-            let q = this.charger * dt
+            let q = this.recharger * dt
             if (this.transponder < q) q = this.transponder
             this.transponder -= q
             this.receiver += q

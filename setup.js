@@ -12,17 +12,8 @@ function setup() {
     })
     //world.zoom(1)
 
-    const b1 = world.mob.spawn(dna.Bot, {
-        team: 1,
-        x: 200, 
-        y: 200,
-    })
 
-    const b2 = world.mob.spawn(dna.Bot, {
-        x: 20,
-        y: 20,
-    })
-
+    // program some chips
     const op = lib.arch.op.code
     const c1 = new lib.arch.Chip()
     c1.flush('energy', [
@@ -31,15 +22,21 @@ function setup() {
         101,
     ])
 
-    b2.cpu.install(c1)
-
-    world.mob.spawn(dna.EnergyDroplet, {
-        x: -100,
-        y: -100,
+    const b1 = world.mob.spawn(dna.Bot, {
+        team: 1,
+        x: 200, 
+        y: 200,
     })
 
-    world.ghost.spawn(dna.EnergyRain)
+    for (let i = 0; i < 120; i++) {
+        const nextBot = world.mob.spawn(dna.Bot, {
+            x: RND(world.w),
+            y: RND(world.h),
+        })
+        nextBot.cpu.install(c1)
+    }
 
+    world.ghost.spawn(dna.EnergyRain)
 
     // attach controls
     lab.control.player.bind(1, b1)
