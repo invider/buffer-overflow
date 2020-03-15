@@ -319,6 +319,15 @@ var $ = <any>{
         },
             sfx:  function(): any {},
             arch:  {
+                    op:  {
+                            setOpCodes:  function(): any {},
+                            code:  {
+                                    RANDOM:  1,
+                },
+                            mnemonic:  {
+                },
+                            name:  1,
+            },
                     Chip:  function(): any {},
                     CPU:  function(): any {},
         },
@@ -494,6 +503,7 @@ var $ = <any>{
             },
         },
             status:  {
+                    botStat:  function(): any {},
                     draw:  function(): any {},
                     Z:  1,
                     name:  1,
@@ -667,6 +677,15 @@ var lib = <any>{
     },
     sfx:  function(): any {},
     arch:  {
+            op:  {
+                    setOpCodes:  function(): any {},
+                    code:  {
+                            RANDOM:  1,
+            },
+                    mnemonic:  {
+            },
+                    name:  1,
+        },
             Chip:  function(): any {},
             CPU:  function(): any {},
     },
@@ -890,6 +909,7 @@ var lab = <any>{
         },
     },
     status:  {
+            botStat:  function(): any {},
             draw:  function(): any {},
             Z:  1,
             name:  1,

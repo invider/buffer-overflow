@@ -1,24 +1,22 @@
 const Z = 11
 
+function botStat(t) {
+    if (!t) return ''
+
+    const receiver = round(t.receiver*10)/10
+    const transponder = round(t.transponder*10)/10
+
+    return `${t.name} @${round(t.x)}:${round(t.y)}`
+        + ` - ${receiver}:${transponder}`
+}
+
 function draw() {
 
     let label = 'test'
 
-    const target = lab.world.pickOne(mouse.x, mouse.y)
-    if (target) {
-        label = 'bot at '
-            + round(target.x)
-            + ':'
-            + round(target.y)
-    } else {
-        const t = lab.control.player.target()
-        if (t) {
-            const receiver = round(t.receiver*10)/10
-            const transponder = round(t.transponder*10)/10
-            label = `${t.name} @${round(t.x)}:${round(t.y)}`
-                + ` - ${receiver}:${transponder}`
-        }
-    }
+    let target = lab.world.pickOne(mouse.x, mouse.y)
+        || lab.control.player.target()
+    label = botStat(target)
 
     font('32px coolville')
     alignLeft()

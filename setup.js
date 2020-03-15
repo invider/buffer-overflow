@@ -19,6 +19,16 @@ function setup() {
         y: 20,
     })
 
+    const op = lib.arch.op.code
+    const c1 = new lib.arch.Chip()
+    c1.flush('energy', [
+        104,
+        op.RANDOM,
+        101,
+    ])
+
+    b2.cpu.install(c1)
+
     lab.control.player.bind(1, b1)
     lab.control.player.bind(2, b1)
     lab.control.player.bind(3, b1)

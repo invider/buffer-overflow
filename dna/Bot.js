@@ -43,6 +43,10 @@ class Bot extends dna.Body {
             case 3: this.y += this.speed * dt; break;
             case 4: this.x += this.speed * dt; break;
         }
+        this.moveFlag = dir
+    }
+
+    move(dir) {
         this.dir = dir
     }
 
@@ -65,6 +69,7 @@ class Bot extends dna.Body {
 
     evo(dt) {
         super.evo(dt)
+        this.act(this.dir, dt)
         this.charge(dt)
 
         this.timer -= dt
@@ -73,6 +78,6 @@ class Bot extends dna.Body {
             this.timer = this.fq
         }
 
-        this.dir = 0
+        this.moveFlag = 0
     }
 }
