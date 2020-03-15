@@ -41,7 +41,7 @@ function touch(x, y) {
 function evo (dt) {
     // go over all entities under the camera
     // and test for collisions
-    let i = lab.world.collide(function(s, t) {
+    let i = lab.world.mob.collide(function(s, t) {
             if (!s.dead && !t.dead && sys.isFun(s.hit)
                         && t.solid
                         && s.x+s.r >= t.x-t.r

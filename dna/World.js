@@ -7,6 +7,7 @@ class World extends dna.SlideCamera {
     init() {
         this.touch('mob')
         this.touch('fx')
+        this.touch('ghost')
     }
 
 	lx(x) {
@@ -88,12 +89,19 @@ class World extends dna.SlideCamera {
         this.y += Math.sin(fi) * this.speed / this.scale * dt
     }
 
+    evoElements(ls, dt) {
+        for (let i = 0; i < ls.length; i++) {
+            const e = ls[i]
+            if (!e.dead) e.evo(dt)
+        }
+    }
+
     evo(dt) {
         if (this.paused) return
 
-        this._ls.forEach( e => {
-            if (e.evo && !e.dead && !e.paused) e.evo(dt)
-        })
+        this.evoElements(this.ghost._ls, dt)
+        this.evoElements(this.mob._ls, dt)
+        this.evoElements(this.fx._ls, dt)
 
         if (this.target) this.follow(dt)
     }

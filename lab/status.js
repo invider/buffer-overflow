@@ -3,11 +3,12 @@ const Z = 11
 function botStat(t) {
     if (!t) return ''
 
-    const receiver = round(t.receiver*10)/10
-    const transponder = round(t.transponder*10)/10
+    const receiver = round(t.receiver)
+    const transponder = round(t.transponder)
+    const energy = round(t.receiver + t.transponder)
 
     return `${t.name} @${round(t.x)}:${round(t.y)}`
-        + ` - ${receiver}:${transponder}`
+        + ` - ${energy}[${receiver}:${transponder}]`
 }
 
 function draw() {

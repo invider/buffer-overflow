@@ -29,6 +29,15 @@ function setup() {
 
     b2.cpu.install(c1)
 
+    world.mob.spawn(dna.EnergyDroplet, {
+        x: -100,
+        y: -100,
+    })
+
+    world.ghost.spawn(dna.EnergyRain)
+
+
+    // attach controls
     lab.control.player.bind(1, b1)
     lab.control.player.bind(2, b1)
     lab.control.player.bind(3, b1)

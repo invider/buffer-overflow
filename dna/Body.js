@@ -30,4 +30,8 @@ class Body {
         if (w.gy(this.y) < 0) this.y = w.ly(ry(1))
         if (w.gy(this.y) > ry(1)) this.y = w.ly(0)
     }
+
+    kill() {
+        this.__.detach(this)
+    }
 }

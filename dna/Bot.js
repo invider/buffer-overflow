@@ -18,12 +18,17 @@ class Bot extends dna.Body {
         super(st, augment( augment({}, df), defaults) )
         this.name = 'bot' + (++id)
         this.fq = .8 + rnd(.4)
-        this.charger = 2 - this.fq
+        this.charger = env.tune.chargePower
         this.cpu = new lib.arch.CPU()
         this.cpu.bot = this
     }
 
     hit(source) {
+        if (source instanceof dna.EnergyDroplet) {
+            this.receiver += source.charge
+            log(`${this.name} energy: +${source.charge}(${round(this.receiver)})`)
+            source.kill()
+        }
     }
 
     infect(bot, force) {
@@ -32,6 +37,7 @@ class Bot extends dna.Body {
             const infected = this
 
             setTimeout(() => {
+                this.dir = 0
                 this.team = bot.team
                 this.cpu.replace(bot.cpu.chipset)
                 this.__.spawn('Emitter', {
@@ -62,7 +68,7 @@ class Bot extends dna.Body {
 
         for (let i = 0; i < this.__._ls.length; i++) {
             const bot = this.__._ls[i]
-            if (!bot.dead && bot !== this) {
+            if (bot instanceof dna.Bot && !bot.dead && bot !== this) {
                 const dist = this.distTo(bot)
                 if (dist < force) {
                     bot.infect(this, force - dist)
