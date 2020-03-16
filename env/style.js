@@ -13,5 +13,13 @@ const style = {
         hsl(.3, .4, .5),   // green
         hsl(.5, .6, .4),   // cyan
         hsl(.65, .4, .5),  // blue
-    ]
+    ],
+
+    sneeze: [
+        hsl(.5,  0, .8),
+        hsl(.02, .9, .5),  // red
+        hsl(.3,  .9, .5),   // green
+        hsl(.5,  .9, .5),   // cyan
+        hsl(.65, .9, .5),  // blue
+    ],
 }
