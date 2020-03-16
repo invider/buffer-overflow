@@ -11,6 +11,9 @@ const style = {
     lineWidth: 1,
     botBorder: 2,
     levelGap: 6,
+    energyBarWidth: 16,
+    energyLow: '#404000',
+    energyHi: '#a0a000',
 
     teams: [
         hsl(.5,  0, .6),

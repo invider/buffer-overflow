@@ -1,5 +1,8 @@
 const Z = 11
 
+const H = 72
+const H2 = H/2
+
 function tab(src, targetLength) {
     while(src.length < targetLength) {
         src += ' '
@@ -49,9 +52,26 @@ function select(target) {
 }
 
 function drawBackground() {
-    const h = 72
     fill(env.style.pane)
-    rect(0, ry(1) - h, rx(1), h)
+    rect(0, ry(1) - H, rx(1), H)
+}
+
+function drawEnergyLevel(bot) {
+    const energy = bot.getEnergy()/env.tune.energyLimit
+    const charge = bot.transponder/env.tune.energyLimit
+    const w = rx(1)
+    const h = env.style.energyBarWidth
+    const x = 0
+    const y = ry(1) - H - h
+
+    fill(env.style.energyLow)
+    rect(x, y, w, h)
+
+    fill(env.style.teams[bot.team])
+    rect(x, y, w * energy, h)
+
+    fill(env.style.energyHi)
+    rect(x + w*(energy-charge), y, w * charge, h)
 }
 
 function draw() {
@@ -71,7 +91,9 @@ function draw() {
 
     font('32px coolville')
     alignLeft()
-    baseBottom()
+    baseMiddle()
     fill(env.style.text)
-    text(label, 20, ry(1) - 20)
+    text(label, 20, ry(1) - H2)
+
+    drawEnergyLevel(target)
 }

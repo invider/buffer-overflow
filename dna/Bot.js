@@ -212,9 +212,9 @@ class Bot extends dna.Body {
         const elen = (this.r + env.style.botBorder) * 2
 
         lineWidth(2)
-        stroke('#404000')
+        stroke(env.style.energyLow)
         line(ex, ey, ex + elen, ey)
-        stroke('#ffff00')
+        stroke(env.style.energyHi)
         line(ex, ey, ex + elen * energy, ey)
     }
 
