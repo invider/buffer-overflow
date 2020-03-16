@@ -253,6 +253,8 @@ class World extends dna.SlideCamera {
     }
 
     draw() {
+        if (this.hidden) return
+
         ctx.save()
         let sw = ctx.width
         let sh = ctx.height
