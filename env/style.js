@@ -7,7 +7,10 @@ const style = {
     focus: hsl(.35, .7, .5),
     selection: hsl(.2, .8, .6),
     control: hsl(.02, .7, .5),
+
     lineWidth: 1,
+    botBorder: 2,
+    levelGap: 6,
 
     teams: [
         hsl(.5,  0, .6),

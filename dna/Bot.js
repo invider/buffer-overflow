@@ -202,11 +202,25 @@ class Bot extends dna.Body {
         this.moveFlag = 0
     }
 
-    draw() {
-        fill(env.style.teams[this.team])
-        rect(this.x - this.r, this.y - this.r, this.r * 2, this.r * 2)
+    drawEnergyBar() {
+        if (!env.opt.showEnergyLevel) return
+        if (this.player || this.focus || this.selected) return
 
-        const r = this.r + 2
+        const energy = this.getEnergy()/env.tune.energyLimit
+        const ex = this.x - this.r - env.style.botBorder
+        const ey = this.y - this.r - env.style.levelGap
+        const elen = (this.r + env.style.botBorder) * 2
+
+        lineWidth(2)
+        stroke('#404000')
+        line(ex, ey, ex + elen, ey)
+        stroke('#ffff00')
+        line(ex, ey, ex + elen * energy, ey)
+    }
+
+    drawBorders() {
+        // selector rectangles
+        const r = this.r + env.style.botBorder
         lineWidth(env.style.lineWidth)
         if (this.player) {
             stroke(env.style.control)
@@ -218,6 +232,14 @@ class Bot extends dna.Body {
             stroke(env.style.selection)
             rect(this.x - r, this.y - r, 2*r, 2*r)
         }
+    }
+
+    draw() {
+        fill(env.style.teams[this.team])
+        rect(this.x - this.r, this.y - this.r, this.r * 2, this.r * 2)
+
+        this.drawEnergyBar()
+        this.drawBorders()
     }
 
     getEnergy() {
