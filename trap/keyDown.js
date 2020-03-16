@@ -1,13 +1,11 @@
 function handleControl(e) {
     switch(e.code) {
-        /*
         case 'Minus':
-            lab.textMode.zoomOut()
+            lab.world.zoomOut()
             break
         case 'Equal':
-            lab.textMode.zoomIn()
+            lab.world.zoomIn()
             break
-        */
 
         case 'KeyP':
             lab.world.paused = !lab.world.paused

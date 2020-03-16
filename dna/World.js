@@ -40,6 +40,18 @@ class World extends dna.SlideCamera {
         this.fx.attach = attach
     }
 
+    zoomIn() {
+        this.zoomFactor = 1
+    }
+
+    zoomOut() {
+        this.zoomFactor = -1
+    }
+
+    stopZoom() {
+        this.zoomFactor = 0
+    }
+
     bind(target) {
         if (!target || !(target instanceof dna.Bot)) return
 
@@ -183,6 +195,14 @@ class World extends dna.SlideCamera {
         this.y += Math.sin(fi) * speed / this.scale * dt
     }
 
+    handleZoom(dt) {
+        if (this.zoomFactor > 0) {
+            this.scale *= 1 + env.tune.zoomSpeed*dt
+        } else if (this.zoomFactor < 0) {
+            this.scale *= 1 - env.tune.zoomSpeed*dt
+        }
+    }
+
     evoElements(ls, dt) {
         for (let i = 0; i < ls.length; i++) {
             const e = ls[i]
@@ -192,6 +212,7 @@ class World extends dna.SlideCamera {
 
     evo(dt) {
         if (this.paused) return
+        this.handleZoom(dt)
 
         this.evoElements(this.ghost._ls, dt)
         this.evoElements(this.mob._ls, dt)
@@ -227,8 +248,9 @@ class World extends dna.SlideCamera {
         ctx.scale(this.scale, this.scale);
         ctx.translate(-this.x, -this.y)
 
+        // world border
         lineWidth(1)
-        stroke('#505054')
+        stroke(env.style.border)
         rect(0, 0, this.w, this.h)
 
         this.drawElements(this.mob._ls, vp)
