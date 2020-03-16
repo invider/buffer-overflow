@@ -1,6 +1,11 @@
 
 const Z = 21
 
+function init() {
+    this.daemon = true
+    this.hidden = true
+}
+
 function show() {
     this.hidden = false
 

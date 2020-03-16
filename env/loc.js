@@ -1,15 +1,17 @@
 const loc = {
     time: 'time',
 
-    title: 'cyber sneeze',
+    title: 'Cyber Sneeze',
     subtitle: 'a game by Igor Khotin',
-    special: 'specially for Quarantine Jam',
+    special: 'Specially for Quarantine Jam',
+    gameover: 'Game Over',
+    teamWins: ' Team Wins!',
 
     teamName: [
-        'neutral',
-        'red',
-        'green',
-        'teal',
-        'blue',
+        'Neutral',
+        'Red',
+        'Green',
+        'Teal',
+        'Blue',
     ]
 }

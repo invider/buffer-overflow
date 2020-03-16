@@ -19,6 +19,10 @@ function findLeader() {
         }
     }
     env.stat.leader = leader
+    if (leader !== 0 && max >= env.tune.winPopulation) {
+        env.winner = leader
+        trap('gameover')
+    }
 }
 
 module.exports = function() {

@@ -4,7 +4,8 @@ const tune = {
     soundDist: 300,
     population: 101,
     teams: 4,
-    teamSize: 22,
+    teamSize: 11,
+    winPopulation: 51,
     energyRain: 8,
     dropLimit: 99,
 
