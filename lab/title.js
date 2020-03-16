@@ -37,12 +37,12 @@ function drawContent() {
         }
 
         const tag = `${name}: ${pop}/${energy}${lead}`
-
         text(tag, rx(ax), H2)
-
         ax += sx
     }
 
+    // time
+    font('32px coolville')
     fill(env.style.text)
     const time = floor(env.stat.time)
     const min = floor(time / 60)

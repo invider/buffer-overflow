@@ -14,12 +14,11 @@ function botStat(t) {
     const receiver = round(t.receiver)
     const transponder = round(t.transponder)
     const energy = round(t.receiver + t.transponder)
+    const teamName = env.loc.teamName[t.team]
 
-    let out = `${t.name} ${energy}[${receiver}:${transponder}]`
+    let out = `${teamName} ${t.name}`
 
     if (t.cpu.activeChip) {
-        out = tab(out, 18)
-
         let sub = ''
         if (t.lastSubroutine) sub = '/' + t.lastSubroutine
         out += ` [${t.cpu.activeChip.title}${sub}]`
@@ -57,6 +56,8 @@ function drawBackground() {
 }
 
 function drawEnergyLevel(bot) {
+    if (!bot || !(bot instanceof dna.Bot)) return
+
     const energy = bot.getEnergy()/env.tune.energyLimit
     const charge = bot.transponder/env.tune.energyLimit
     const w = rx(1)
@@ -85,8 +86,10 @@ function draw() {
     //if (!target instanceof dna.Body) target = null
 
     if (!target) {
-        target = this.selected || lab.control.player.target()
+        target = this.selected || lab.world.getTarget()
     }
+    if (!(target instanceof dna.Bot)) return
+
     label += bodyStat(target)
 
     font('32px coolville')
