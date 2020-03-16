@@ -7,6 +7,20 @@ function resetStat() {
     }
 }
 
+function findLeader() {
+    let leader = 0
+    let max = 0
+
+    for (let i = 0; i < env.tune.teams; i++) {
+        const pop = env.stat.population[i]
+        if (pop > max) {
+            max = pop
+            leader = i
+        }
+    }
+    env.stat.leader = leader
+}
+
 module.exports = function() {
 
     const mobs = lab.world.mob._ls
@@ -14,6 +28,7 @@ module.exports = function() {
     const total = env.tune.teams + 1
 
     resetStat()
+
     for (let i = 0; i < mobs.length; i++) {
         const m = mobs[i]
         if (m.dead) continue
@@ -28,4 +43,6 @@ module.exports = function() {
             stat.droplets ++
         }
     }
+
+    findLeader()
 }

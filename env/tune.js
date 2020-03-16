@@ -3,7 +3,7 @@ const tune = {
     worldHeight: 1000,
     population: 101,
     teams: 4,
-    teamSize: 11,
+    teamSize: 22,
     energyRain: 8,
     dropLimit: 99,
 
