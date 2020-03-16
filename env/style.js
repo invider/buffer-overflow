@@ -1,6 +1,8 @@
 const style = {
     background: hsl(.55, .3, .05),
     border: hsl(.6, .5, .45),
+    pane: '#171715A0',
+    text: '#A0A000',
 
     focus: hsl(.35, .7, .5),
     selection: hsl(.2, .8, .6),

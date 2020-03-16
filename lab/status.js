@@ -48,12 +48,19 @@ function select(target) {
     if (target) target.selected = true
 }
 
+function drawBackground() {
+    const h = 72
+    fill(env.style.pane)
+    rect(0, ry(1) - h, rx(1), h)
+}
+
 function draw() {
+    this.drawBackground()
 
     let label = ''
-
-    // current under the cursor
     let target
+
+    // current target under the cursor
     //let target = lab.world.pickOne(mouse.x, mouse.y)
     //if (!target instanceof dna.Body) target = null
 
@@ -65,6 +72,6 @@ function draw() {
     font('32px coolville')
     alignLeft()
     baseBottom()
-    fill('#909000')
+    fill(env.style.text)
     text(label, 20, ry(1) - 20)
 }
