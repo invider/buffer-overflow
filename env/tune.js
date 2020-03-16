@@ -2,9 +2,10 @@ const tune = {
     worldWidth: 1000,
     worldHeight: 1000,
     population: 101,
+    teams: 4,
     teamSize: 11,
     energyRain: 8,
-    dropLimit: 201,
+    dropLimit: 99,
 
     botSpeed: 40,
     chargePower: 40,

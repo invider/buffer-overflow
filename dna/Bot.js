@@ -220,6 +220,10 @@ class Bot extends dna.Body {
         }
     }
 
+    getEnergy() {
+        return this.receiver + this.transponder
+    }
+
     distTo(target) {
         return dist(this.x, this.y, target.x, target.y)
     }

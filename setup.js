@@ -1,3 +1,3 @@
 function setup() {
-    lib.gen.genesis()
+    trap('start')
 }

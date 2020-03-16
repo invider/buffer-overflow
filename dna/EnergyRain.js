@@ -1,7 +1,7 @@
 class EnergyRain {
 
     evo(dt) {
-        if (lab.world.mob._ls.length > env.tune.dropLimit) return
+        if (env.stat.droplets > env.tune.dropLimit) return
 
         if (rnd() < env.tune.energyRain * dt) {
             const w = lab.world
