@@ -1,0 +1,7 @@
+.chip "random walker"
+
+-- define energy subroutine
+energy:
+    -- wait or random direction with priority 1
+    4 random 1
+

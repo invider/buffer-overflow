@@ -12,6 +12,7 @@ function setup() {
     })
     //world.zoom(1)
 
+    /*
     // program some chips
     const op = lib.arch.op.code
     const c1 = new lib.arch.Chip()
@@ -20,6 +21,7 @@ function setup() {
         op.RANDOM,
         101,
     ])
+    */
 
     const b1 = world.mob.spawn(dna.Bot, {
         team: 1,
@@ -32,7 +34,7 @@ function setup() {
             x: RND(world.w),
             y: RND(world.h),
         })
-        nextBot.cpu.install(c1)
+        nextBot.cpu.install(lib.chip.randomWalker)
     }
 
     world.ghost.spawn(dna.EnergyRain)
