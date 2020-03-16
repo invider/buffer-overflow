@@ -2,8 +2,8 @@ function click(e) {
     const target = lab.world.pickOne(mouse.x, mouse.y)
 
     if (target && target instanceof dna.Bot) {
-        lab.status.selected = target
+        lab.status.select(target)
     } else {
-        lab.status.selected = null
+        lab.status.select()
     }
 }

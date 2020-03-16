@@ -25,10 +25,10 @@ class Body {
     evo(dt) {
         // warp the world
         const w = lab.world
-        if (this.x < 0) this.x = w.w
-        if (this.x > w.w) this.x = 0
-        if (this.y < 0) this.y = w.h
-        if (this.y > w.h) this.y = 0
+        if (this.x < this.r) this.x = w.w - this.r
+        if (this.x > w.w - this.r) this.x = this.r
+        if (this.y < this.r) this.y = w.h - this.r
+        if (this.y > w.h - this.r) this.y = this.r
     }
 
     kill() {

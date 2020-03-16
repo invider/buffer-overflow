@@ -116,8 +116,13 @@ class World extends dna.SlideCamera {
             return
         }
         let fi = Math.atan2(dy, dx);
-        this.x += Math.cos(fi) * this.speed / this.scale * dt
-        this.y += Math.sin(fi) * this.speed / this.scale * dt
+
+        let speed = this.speed
+        if (abs(dx) > 300 || abs(dy) > 150) {
+            speed = this.highSpeed
+        }
+        this.x += Math.cos(fi) * speed / this.scale * dt
+        this.y += Math.sin(fi) * speed / this.scale * dt
     }
 
     evoElements(ls, dt) {

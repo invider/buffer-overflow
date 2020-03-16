@@ -37,7 +37,14 @@ function bodyStat(e) {
     return ''
 }
 
-function selectedTarget() { return this.selected || lab.control.player.target()
+function selectedTarget() {
+    return this.selected || lab.control.player.target()
+}
+
+function select(target) {
+    if (this.selected) this.selected.selected = false
+    this.selected = target
+    if (target) target.selected = true
 }
 
 function draw() {

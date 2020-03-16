@@ -172,6 +172,18 @@ class Bot extends dna.Body {
     draw() {
         fill(env.style.teams[this.team])
         rect(this.x - this.r, this.y - this.r, this.r * 2, this.r * 2)
+
+        if (this.selected) {
+            lineWidth(2)
+            stroke(env.style.selection)
+            const r = this.r + 2
+            rect(this.x - r, this.y - r, 2*r, 2*r)
+        } else if (this.player) {
+            lineWidth(2)
+            stroke(env.style.control)
+            const r = this.r + 2
+            rect(this.x - r, this.y - r, 2*r, 2*r)
+        }
     }
 
     distTo(target) {

@@ -8,7 +8,9 @@ function setup() {
         w: env.tune.worldWidth,
         h: env.tune.worldHeight,
         speed: env.tune.cameraSpeed,
+        highSpeed: env.tune.cameraSpeed * 8,
         zoomOnPlusMinus: true,
+        targetingPrecision: 100,
     })
     //world.zoom(1)
 
