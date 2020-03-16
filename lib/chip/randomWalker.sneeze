@@ -3,5 +3,5 @@
 -- define energy subroutine
 energy:
     -- wait or random direction with priority 1
-    4 random 1
+    5 random 1
 

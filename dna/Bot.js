@@ -33,6 +33,8 @@ class Bot extends dna.Body {
     }
 
     infect(bot, force) {
+        if (this.player) return
+
         if (force > this.receiver) {
 
             const infected = this
@@ -112,6 +114,13 @@ class Bot extends dna.Body {
     deactivate(dir) {
     }
 
+    handleSneezeTrigger() {
+        if (this.dir === 5) {
+            this.dir = 0
+            this.sneeze()
+        }
+    }
+
     act(dir, dt) {
         switch(dir) {
             case 1: this.y -= this.speed * dt; break;
@@ -145,7 +154,10 @@ class Bot extends dna.Body {
 
     evo(dt) {
         super.evo(dt)
-        if (!this.player) this.act(this.dir, dt)
+        if (!this.player) {
+            this.handleSneezeTrigger()
+            this.act(this.dir, dt)
+        }
         this.charge(dt)
 
         this.timer -= dt
