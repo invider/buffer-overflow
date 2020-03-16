@@ -1,4 +1,4 @@
-.chip "randomizer"
+.chip "mark to one"
 
 -- define energy subroutine
 energy:

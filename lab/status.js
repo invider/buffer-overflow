@@ -1,12 +1,27 @@
 const Z = 11
 
+function tab(src, targetLength) {
+    while(src.length < targetLength) {
+        src += ' '
+    }
+    return src
+}
+
 function botStat(t) {
     const receiver = round(t.receiver)
     const transponder = round(t.transponder)
     const energy = round(t.receiver + t.transponder)
 
-    return `${t.name} @${round(t.x)}:${round(t.y)}`
-        + ` - ${energy}[${receiver}:${transponder}]`
+    let out = `${t.name} ${energy}[${receiver}:${transponder}]`
+
+    if (t.cpu.activeChip) {
+        out = tab(out, 12)
+
+        const sub = t.lastSubroutine || ''
+        out += ` [${t.cpu.activeChip.title}/${sub}]`
+    }
+
+    return out
 }
 
 function energyStat(e) {
@@ -30,13 +45,12 @@ function draw() {
     let label = ''
 
     // current under the cursor
-    let target = lab.world.pickOne(mouse.x, mouse.y)
-    if (!target instanceof dna.Body) target = null
+    let target
+    //let target = lab.world.pickOne(mouse.x, mouse.y)
+    //if (!target instanceof dna.Body) target = null
 
     if (!target) {
         target = this.selected || lab.control.player.target()
-    } else {
-        console.dir(target)
     }
     label += bodyStat(target)
 
