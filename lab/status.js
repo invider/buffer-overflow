@@ -1,8 +1,6 @@
 const Z = 11
 
 function botStat(t) {
-    if (!t) return ''
-
     const receiver = round(t.receiver)
     const transponder = round(t.transponder)
     const energy = round(t.receiver + t.transponder)
@@ -11,13 +9,36 @@ function botStat(t) {
         + ` - ${energy}[${receiver}:${transponder}]`
 }
 
+function energyStat(e) {
+    const energy = round(e.charge)
+    return `[${energy}] energy`
+}
+
+function bodyStat(e) {
+    if (!e) return 'undef'
+    if (e.dead) return 'dead ' + e.name
+    if (e instanceof dna.Bot) return botStat(e)
+    if (e instanceof dna.EnergyDroplet) return energyStat(e)
+    return ''
+}
+
+function selectedTarget() { return this.selected || lab.control.player.target()
+}
+
 function draw() {
 
-    let label = 'test'
+    let label = ''
 
+    // current under the cursor
     let target = lab.world.pickOne(mouse.x, mouse.y)
-        || lab.control.player.target()
-    label = botStat(target)
+    if (!target instanceof dna.Body) target = null
+
+    if (!target) {
+        target = this.selected || lab.control.player.target()
+    } else {
+        console.dir(target)
+    }
+    label += bodyStat(target)
 
     font('32px coolville')
     alignLeft()

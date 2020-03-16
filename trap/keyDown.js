@@ -21,6 +21,10 @@ function handleControl(e) {
             }
             break
 
+        case 'F3':
+            lib.util.loadChip()
+            break
+
         case 'F8':
             lib.img.screenshot('infected-island')
             break

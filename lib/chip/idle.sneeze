@@ -1,0 +1,7 @@
+.chip "idle"
+
+-- define energy subroutine
+energy:
+    -- just stay
+    0 1
+

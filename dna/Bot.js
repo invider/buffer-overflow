@@ -43,7 +43,7 @@ class Bot extends dna.Body {
                 this.dir = 0
                 this.team = bot.team
                 this.cpu.replace(bot.cpu.chipset)
-                this.__.spawn('Emitter', {
+                this.__.__.fx.spawn('Emitter', {
                     Z: this.Z+1,
                     x: this.x,
                     y: this.y,
@@ -82,7 +82,7 @@ class Bot extends dna.Body {
         // fx
         const speed = 100
         const estLife = force / speed
-        this.__.spawn('Emitter', {
+        this.__.__.fx.spawn('Emitter', {
             Z: this.Z+1,
             x: this.x,
             y: this.y,
