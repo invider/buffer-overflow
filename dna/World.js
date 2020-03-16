@@ -41,6 +41,24 @@ class World extends dna.SlideCamera {
         this.fx.attach = attach
     }
 
+    bind(target) {
+        if (!target || !(target instanceof dna.Bot)) return
+
+        // attach controls
+        lab.control.player.bind(1, target)
+        lab.control.player.bind(2, target)
+        lab.control.player.bind(3, target)
+        this.target = target
+    }
+
+    release() {
+        if (this.target) {
+            lab.control.player.release(1)
+            lab.control.player.release(2)
+            lab.control.player.release(3)
+        }
+    }
+
 	lx(x) {
 		return (x-ctx.width/2)/this.scale + this.x
 	}

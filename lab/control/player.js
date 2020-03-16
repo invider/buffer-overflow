@@ -13,6 +13,14 @@ function bind(player, target) {
     if (!ctrl[player]) ctrl[player] = []
 }
 
+function release(player) {
+    const target = targetMap[player]
+    if (target) {
+        target.player = 0
+        targetMap[player] = false
+    }
+}
+
 function target(player) {
     if (!player) player = 0
     else player = player - 1
