@@ -49,7 +49,7 @@ function stop(action, player) {
     if (ctrl[player]) {
         if (ctrl[player][action]) {
             const target = targetMap[player]
-            if (target && target.activate) {
+            if (target && target.deactivate) {
                 target.deactivate(action + 1)
             }
         }

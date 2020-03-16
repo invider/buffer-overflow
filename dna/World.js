@@ -1,4 +1,3 @@
-
 // optimized attach version
 function attach(e) {
     let islot = -1
@@ -44,11 +43,13 @@ class World extends dna.SlideCamera {
     bind(target) {
         if (!target || !(target instanceof dna.Bot)) return
 
+        this.release()
+
         // attach controls
         lab.control.player.bind(1, target)
         lab.control.player.bind(2, target)
         lab.control.player.bind(3, target)
-        this.target = target
+        this.setTarget(target)
     }
 
     release() {
@@ -56,6 +57,36 @@ class World extends dna.SlideCamera {
             lab.control.player.release(1)
             lab.control.player.release(2)
             lab.control.player.release(3)
+        }
+
+        lab.control.player.bind(1, lab.control.flow)
+        lab.control.player.bind(2, lab.control.flow)
+        lab.control.player.bind(3, lab.control.flow)
+    }
+
+    nextBot(prevBot, fn) {
+        const ls = this.mob._ls
+        let i = ls.indexOf(prevBot)
+
+        i++
+        const mark = i
+        // look in the current span
+        while(i < ls.length) {
+            const bot = ls[i++]
+            if (bot && !bot.dead && bot instanceof dna.Bot) {
+                if (!fn) return bot
+                if (fn(bot)) return bot
+            }
+        }
+
+        // try from the start
+        i = 0
+        while (i < ls.length && i < mark) {
+            const bot = ls[i++]
+            if (bot && !bot.dead && bot instanceof dna.Bot) {
+                if (!fn) return bot
+                if (fn(bot)) return bot
+            }
         }
     }
 
@@ -84,10 +115,11 @@ class World extends dna.SlideCamera {
 		]
 	}
 
-	inView(x, y) {
-		let sx = this.lx(x)
-		let sy = this.ly(y)
-		return (sx >= 0 && sx <= ctx.width && sy >= 0 && sy <= ctx.height)
+	inView(x, y, b) {
+		let sx = this.gx(x)
+		let sy = this.gy(y)
+        if (!b) b = 0
+		return (sx >= b && sx <= ctx.width-b && sy >= b && sy <= ctx.height-b)
 	}
 
 	pick(gx, gy) {
@@ -123,22 +155,30 @@ class World extends dna.SlideCamera {
         }
 	}
 
+    getTarget() {
+        return this.target
+    }
+
+    setTarget(target) {
+        if (this.target) this.target.focus = false
+        this.target = target
+        target.focus = true
+    }
+
     follow(dt) {
         let dx = this.target.x - this.x
         let dy = this.target.y - this.y
-        if (dx < this.targetingPrecision
-                && dx > -this.targetingPrecision
-                && dy < this.targetingPrecision
-                && dy > -this.targetingPrecision) {
-            // close enough
-            return
-        }
+
+        const precision = this.targetPrecision * this.scale
+        if (dx < precision && dx > -precision && dy < precision && dy > -precision) return
+
         let fi = Math.atan2(dy, dx);
 
-        let speed = this.speed
-        if (abs(dx) > 300 || abs(dy) > 150) {
-            speed = this.highSpeed
+        let speed = this.speed * this.scale
+        if (!this.inView(this.target.x, this.target.y, rx(.2))) {
+            speed = this.highSpeed * this.scale
         }
+
         this.x += Math.cos(fi) * speed / this.scale * dt
         this.y += Math.sin(fi) * speed / this.scale * dt
     }

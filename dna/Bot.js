@@ -105,9 +105,36 @@ class Bot extends dna.Body {
         else this.cpu.next()
     }
 
+    jumpNext() {
+        const team = this.team
+        let next = lab.status.selectedTarget()
+        if (!next || next === this || next.team !== this.team) {
+            next = lab.world.nextBot(next, (b) => b.team === team)
+        }
+
+        if (next && next instanceof dna.Bot) {
+            lab.world.bind(next)
+        }
+    }
+
+    selectNext() {
+        const selected = lab.status.selectedTarget()
+        const next = lab.world.nextBot(selected, (b) => lab.world.inView(b.x, b.y))
+        if (next && next instanceof dna.Bot) {
+            lab.status.select(next)
+        }
+    }
+
+    release() {
+        lab.world.release()
+    }
+
     activate(dir) {
         switch(dir) {
+            case 5: this.jumpNext(); break;
+            case 6: this.selectNext(); break;
             case 7: this.sneeze(); break;
+            case 8: this.release(); break;
         }
     }
 
@@ -173,15 +200,16 @@ class Bot extends dna.Body {
         fill(env.style.teams[this.team])
         rect(this.x - this.r, this.y - this.r, this.r * 2, this.r * 2)
 
-        if (this.selected) {
-            lineWidth(2)
-            stroke(env.style.selection)
-            const r = this.r + 2
-            rect(this.x - r, this.y - r, 2*r, 2*r)
-        } else if (this.player) {
-            lineWidth(2)
+        const r = this.r + 2
+        lineWidth(env.style.lineWidth)
+        if (this.player) {
             stroke(env.style.control)
-            const r = this.r + 2
+            rect(this.x - r, this.y - r, 2*r, 2*r)
+        } else if (this.focus) {
+            stroke(env.style.focus)
+            rect(this.x - r, this.y - r, 2*r, 2*r)
+        } else if (this.selected) {
+            stroke(env.style.selection)
             rect(this.x - r, this.y - r, 2*r, 2*r)
         }
     }
