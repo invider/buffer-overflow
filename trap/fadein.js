@@ -6,7 +6,7 @@ function fadein() {
         fadeout: 1,
 
         onFadeout: function() {
-            lib.util.show()
+            lab.spash.show()
         }
     })
 }
