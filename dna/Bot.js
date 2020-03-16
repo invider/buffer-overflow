@@ -27,7 +27,7 @@ class Bot extends dna.Body {
     hit(source) {
         if (source instanceof dna.EnergyDroplet) {
             this.receiver += source.charge
-            log(`${this.name} energy: +${source.charge}(${round(this.receiver)})`)
+            // log(`${this.name} energy: +${source.charge}(${round(this.receiver)})`)
             source.kill()
         }
     }

@@ -77,7 +77,7 @@ class World extends dna.SlideCamera {
 		let wy = this.ly(gy)
 
 		let res = []
-		this._ls.forEach( e => {
+		this.mob._ls.forEach( e => {
 			if (e.draw && !e.dead && !e.hidden
 					&& e.x - e.r <= wx
 					&& e.x + e.r >= wx
@@ -93,8 +93,8 @@ class World extends dna.SlideCamera {
 		let wx = this.lx(gx)
 		let wy = this.ly(gy)
 
-        for (let i = 0; i < this._ls.length; i++) {
-            const e = this._ls[i]
+        for (let i = 0; i < this.mob._ls.length; i++) {
+            const e = this.mob._ls[i]
 			if (e.draw && !e.dead && !e.hidden
 					&& e.x - e.r <= wx
 					&& e.x + e.r >= wx

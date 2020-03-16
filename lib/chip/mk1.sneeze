@@ -1,0 +1,20 @@
+.chip "randomizer"
+
+-- define energy subroutine
+energy:
+    5 random 15
+
+left-bumper:
+    up 10
+
+right-bumper:
+    down 11
+
+top-bumper:
+    left 10
+
+bottom-bumper:
+    right 10
+
+
+

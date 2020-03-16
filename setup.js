@@ -12,7 +12,6 @@ function setup() {
     })
     //world.zoom(1)
 
-
     // program some chips
     const op = lib.arch.op.code
     const c1 = new lib.arch.Chip()
