@@ -25,6 +25,13 @@ function handleControl(e) {
             lib.util.loadChip()
             break
 
+        case 'F7':
+            const bot = lab.status.selectedTarget()
+            if (bot && bot.cpu.activeChip) {
+                lib.util.saveChip(bot.cpu.activeChip)
+            }
+            break
+
         case 'F8':
             lib.img.screenshot('infected-island')
             break
