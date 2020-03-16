@@ -1,5 +1,6 @@
 const style = {
     background: hsl(.55, .3, .05),
+    border: hsl(.6, .5, .45),
 
     focus: hsl(.35, .7, .5),
     selection: hsl(.2, .8, .6),
@@ -7,10 +8,10 @@ const style = {
     lineWidth: 1,
 
     teams: [
-        hsl(.1,  0, .5),
-        hsl(.1, .4, .5),
-        hsl(.3, .4, .5),
-        hsl(.5, .4, .5),
-        hsl(.7, .4, .5),
+        hsl(.5,  0, .6),
+        hsl(.02, .5, .4),  // red
+        hsl(.3, .4, .5),   // green
+        hsl(.5, .6, .4),   // cyan
+        hsl(.65, .4, .5),  // blue
     ]
 }

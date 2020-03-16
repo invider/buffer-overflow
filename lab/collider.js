@@ -38,9 +38,35 @@ function touch(x, y) {
     return res
 }
 
+let runs = 0
+let tests = 0
+
 function evo (dt) {
     // go over all entities under the camera
     // and test for collisions
+    
+    runs ++
+    const ls = lab.world.mob._ls
+    const len = ls.length
+
+    for (let j = 0; j < len; j++) {
+        const s = ls[j]
+        for (let i = 0; i < len; i++) {
+            const t = ls[i]
+
+            tests ++
+            if (s !== t && !s.dead && !t.dead
+                        && s.hit
+                        && t.solid
+                        && s.x+s.r >= t.x-t.r
+                        && s.x-s.r <= t.x+t.r
+                        && s.y+s.r >= t.y-t.r
+                        && s.y-s.r <= t.y+t.r) {
+                s.hit(t, dt)
+            }
+        }
+    }
+    /*
     let i = lab.world.mob.collide(function(s, t) {
             if (!s.dead && !t.dead && sys.isFun(s.hit)
                         && t.solid
@@ -52,4 +78,5 @@ function evo (dt) {
             }
         }
     )
+    */
 }

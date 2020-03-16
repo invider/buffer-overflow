@@ -5,8 +5,8 @@ const defaults = {
     solid: true,
     team: 0,
     timer: 0,
-    receiver: 10,
-    transponder: 100,
+    receiver: 0,
+    transponder: 0,
 }
 
 let id = 0
@@ -19,6 +19,7 @@ class Bot extends dna.Body {
         this.fq = .8 + rnd(.4)
         this.charger = env.tune.chargePower
         this.recharger = env.tune.rechargePower
+        this.receiver = env.tune.energyLimit * env.tune.startEnergy
         this.speed = env.tune.botSpeed
         this.cpu = new lib.arch.CPU()
         this.cpu.bot = this
@@ -27,6 +28,9 @@ class Bot extends dna.Body {
     hit(source) {
         if (source instanceof dna.EnergyDroplet) {
             this.receiver += source.charge
+            if ((this.receiver+ this.transponder) > env.tune.energyLimit) {
+                this.receiver = env.tune.energyLimit - this.transponder
+            }
             // log(`${this.name} energy: +${source.charge}(${round(this.receiver)})`)
             source.kill()
         }

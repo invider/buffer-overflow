@@ -2,7 +2,7 @@ mod/dist
 mod/.git*
 mod/LICENSE
 mod/README*
-mod/types.js
+mod/types.ts
 
 collider.mix/ext.fix/boot*
 
