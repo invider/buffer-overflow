@@ -234,10 +234,17 @@ class Bot extends dna.Body {
         }
     }
 
-    draw() {
-        fill(env.style.teams[this.team])
-        rect(this.x - this.r, this.y - this.r, this.r * 2, this.r * 2)
+    drawBot() {
+        //fill(env.style.teams[this.team])
+        //rect(this.x - this.r, this.y - this.r, this.r * 2, this.r * 2)
+        const r = this.r
+        const r2 = r * 2
+        blocky()
+        image(res.bot[this.team], this.x - r, this.y - r, r2, r2)
+    }
 
+    draw() {
+        this.drawBot()
         this.drawEnergyBar()
         this.drawBorders()
     }

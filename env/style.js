@@ -20,7 +20,8 @@ const style = {
         hsl(.02, .5, .4),  // red
         hsl(.3, .4, .5),   // green
         hsl(.5, .6, .4),   // cyan
-        hsl(.65, .4, .5),  // blue
+        //hsl(.65, .4, .5),  // blue
+        '#2f76da',         // blue
     ],
 
     sneeze: [
