@@ -7,7 +7,6 @@ const defaults = {
     timer: 0,
     receiver: 10,
     transponder: 100,
-    speed: 70,
 }
 
 let id = 0
@@ -20,6 +19,7 @@ class Bot extends dna.Body {
         this.fq = .8 + rnd(.4)
         this.charger = env.tune.chargePower
         this.recharger = env.tune.rechargePower
+        this.speed = env.tune.botSpeed
         this.cpu = new lib.arch.CPU()
         this.cpu.bot = this
     }
@@ -149,11 +149,13 @@ class Bot extends dna.Body {
     }
 
     act(dir, dt) {
+        const boost = this.player? env.tune.playerBoost : 1
+        const delta = this.speed * boost * dt
         switch(dir) {
-            case 1: this.y -= this.speed * dt; break;
-            case 2: this.x -= this.speed * dt; break;
-            case 3: this.y += this.speed * dt; break;
-            case 4: this.x += this.speed * dt; break;
+            case 1: this.y -= delta; break;
+            case 2: this.x -= delta; break;
+            case 3: this.y += delta; break;
+            case 4: this.x += delta; break;
         }
         this.moveFlag = dir
     }

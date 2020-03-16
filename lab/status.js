@@ -15,10 +15,11 @@ function botStat(t) {
     let out = `${t.name} ${energy}[${receiver}:${transponder}]`
 
     if (t.cpu.activeChip) {
-        out = tab(out, 12)
+        out = tab(out, 18)
 
-        const sub = t.lastSubroutine || ''
-        out += ` [${t.cpu.activeChip.title}/${sub}]`
+        let sub = ''
+        if (t.lastSubroutine) sub = '/' + t.lastSubroutine
+        out += ` [${t.cpu.activeChip.title}${sub}]`
     }
 
     return out
