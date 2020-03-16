@@ -4,7 +4,7 @@ const tune = {
     population: 101,
     teamSize: 11,
     energyRain: 8,
-    dropLimit: 1000301,
+    dropLimit: 201,
 
     botSpeed: 40,
     chargePower: 40,

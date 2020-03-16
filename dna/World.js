@@ -181,14 +181,23 @@ class World extends dna.SlideCamera {
         let dx = this.target.x - this.x
         let dy = this.target.y - this.y
 
-        const precision = this.targetPrecision * this.scale
-        if (dx < precision && dx > -precision && dy < precision && dy > -precision) return
+        const precision = this.targetingPrecision * this.scale
+        if (dx < precision && dx > -precision && dy < precision && dy > -precision) {
+            this.fastForward = false
+            return
+        }
 
         let fi = Math.atan2(dy, dx);
 
-        let speed = this.speed * this.scale
-        if (!this.inView(this.target.x, this.target.y, rx(.2))) {
+        if (!this.inView(this.target.x, this.target.y)) {
+            this.fastForward = true
+        }
+
+        let speed
+        if (this.fastForward) {
             speed = this.highSpeed * this.scale
+        } else {
+            speed = this.speed * this.scale
         }
 
         this.x += Math.cos(fi) * speed / this.scale * dt
