@@ -1,9 +1,9 @@
 const keyboard = [
-    [ 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyE', 'KeyQ', 'Space'],
+    [ 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyE', 'KeyQ', 'Space', 'Escape'],
     [ 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight',
-        'PageDown', 'PageUp', 'ShiftRight' ],
+        'PageDown', 'PageUp', 'ShiftRight', 'End' ],
     [ 'KeyK', 'KeyH', 'KeyJ', 'KeyL',
-        'BracketRight', 'BracketLeft', 'Enter' ],
+        'BracketRight', 'BracketLeft', 'Enter', 'Backspace' ],
 ]
 
 const keyMap = {}
