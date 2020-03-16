@@ -33,6 +33,10 @@ class Bot extends dna.Body {
             }
             // log(`${this.name} energy: +${source.charge}(${round(this.receiver)})`)
             source.kill()
+
+            if (this.focus) {
+                sfx.play('pickup', .6)
+            }
         }
     }
 
@@ -42,6 +46,7 @@ class Bot extends dna.Body {
         if (force > this.receiver) {
 
             const infected = this
+            this.receiver = 0
 
             setTimeout(() => {
                 this.dir = 0
@@ -62,8 +67,12 @@ class Bot extends dna.Body {
                     minLifespan: 0.2, vLifespan: 0,
                 })
 
+                sfx.play('wawa', lab.world.getViewVolume(this))
+
             }, 1000 + RND(1000))
             return true
+        } else {
+            this.receiver -= force
         }
     }
 
@@ -100,6 +109,8 @@ class Bot extends dna.Body {
             angle: 0, spread: TAU,
             minLifespan: 0.2, vLifespan: estLife,
         })
+
+        sfx.play('sneeze', lab.world.getViewVolume(this))
 
         return force
     }

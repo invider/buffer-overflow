@@ -31,7 +31,7 @@ function handleControl(e) {
             break
 
         case 'F8':
-            lib.img.screenshot('infected-island')
+            lib.img.screenshot('cyber-sneeze')
             break
     }
 }

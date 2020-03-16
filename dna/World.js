@@ -173,8 +173,14 @@ class World extends dna.SlideCamera {
 
     setTarget(target) {
         if (this.target) this.target.focus = false
+
+        let type = 'teleport'
+        if (this.target === target) type = 'selectLow'
+
         this.target = target
         target.focus = true
+
+        sfx.play(type, .8)
     }
 
     follow(dt) {
@@ -267,5 +273,18 @@ class World extends dna.SlideCamera {
         this.drawElements(this.fx._ls, vp)
 
         ctx.restore()
+    }
+
+    getVolume(target) {
+        const d = dist(target.x, target.y, this.x, this.y)
+        const vol = max(1 - d/env.tune.soundDist, 0)
+        return vol
+    }
+
+    getViewVolume(target) {
+        if (!this.inView(target.x, target.y)) {
+            return 0
+        }
+        return this.getVolume(target)
     }
 }

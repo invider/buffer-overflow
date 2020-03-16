@@ -1,6 +1,7 @@
 const tune = {
     worldWidth: 1000,
     worldHeight: 1000,
+    soundDist: 300,
     population: 101,
     teams: 4,
     teamSize: 22,
