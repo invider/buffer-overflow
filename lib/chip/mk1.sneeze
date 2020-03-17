@@ -10,8 +10,19 @@ energy:
     1 load
     0 load
 
+-------------
     1 call
     2 call
+-------------
+
+    -- counter
+    5
+
+    mark
+    dec
+    dup
+    -5
+    jnz
 
     5 random 11
 
