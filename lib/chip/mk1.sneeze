@@ -2,7 +2,8 @@
 
 -- define energy subroutine
 energy:
-    5 random 15
+    5 random 11
+    dump
 
 left-bumper:
     up 10

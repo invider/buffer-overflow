@@ -18,7 +18,6 @@ function show() {
         fadeout: 1,
 
         onFadeout: function() {
-            log('out')
             lib.util.show()
             spash.hidden = true
         }
