@@ -2,8 +2,11 @@
 
 -- define energy subroutine
 energy:
-    5 random 11
+    5 inc 5 dec sub
+    16 over div dup mul swap
+
     dump
+    5 random 11
 
 left-bumper:
     up 10

@@ -47,8 +47,10 @@ function selectedTarget() {
 function select(target) {
     if (this.selected) this.selected.selected = false
     this.selected = target
-    if (target) target.selected = true
-    sfx.play('transmit', .6)
+    if (target) {
+        target.selected = true
+        sfx.play('transmit', .6)
+    }
 }
 
 function drawBackground() {
