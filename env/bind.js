@@ -1,18 +1,18 @@
 const keyboard = [
-    [ 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyE', 'KeyQ', 'Space', 'Escape'],
+    [ 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyE', 'KeyQ', 'Space', 'Escape', 'KeyZ' ],
     [ 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight',
-        'PageDown', 'PageUp', 'ShiftRight', 'End' ],
+        'PageDown', 'PageUp', 'ShiftRight', 'End', 'Insert' ],
     [ 'KeyK', 'KeyH', 'KeyJ', 'KeyL',
-        'BracketRight', 'BracketLeft', 'Enter', 'Backspace' ],
+        'BracketRight', 'BracketLeft', 'Enter', 'Backspace', 'Backslash' ],
 ]
 
 const keyMap = {}
 
 const padMap = [
-    [12, 14, 13, 15, 1, 3, 0, 2],
-    [12, 14, 13, 15, 1, 3, 0, 2],
-    [12, 14, 13, 15, 1, 3, 0, 2],
-    [12, 14, 13, 15, 1, 3, 0, 2],
+    [12, 14, 13, 15, 1, 3, 0, 2, 8],
+    [12, 14, 13, 15, 1, 3, 0, 2, 8],
+    [12, 14, 13, 15, 1, 3, 0, 2, 8],
+    [12, 14, 13, 15, 1, 3, 0, 2, 8],
 ]
 
 function indexKeys() {

@@ -11,14 +11,6 @@ function handleControl(e) {
             lab.world.paused = !lab.world.paused
             break
 
-        case 'Backslash':
-            if (lab.textMode.sidePanel.hidden) {
-                lab.textMode.sidePanel.show()
-            } else {
-                lab.textMode.sidePanel.hide()
-            }
-            break
-
         case 'F3':
             lib.util.loadChip()
             break

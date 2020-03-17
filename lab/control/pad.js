@@ -85,5 +85,10 @@ function evo(dt) {
         } else {
             p.stop(7, id)
         }
+        if (d.buttons[b[8]] && d.buttons[b[8]].pressed) {
+            p.act(8, id)
+        } else {
+            p.stop(8, id)
+        }
     })
 }

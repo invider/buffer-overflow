@@ -150,6 +150,7 @@ class Bot extends dna.Body {
             case 6: this.selectNext(); break;
             case 7: this.sneeze(); break;
             case 8: this.release(); break;
+            case 9: this.cpu.nextChip(); break;
         }
     }
 

@@ -20,7 +20,7 @@ function botStat(t) {
 
     if (t.cpu.activeChip) {
         let sub = ''
-        if (t.lastSubroutine) sub = '/' + t.lastSubroutine
+        if (t.cpu.lastSubroutine) sub = '/' + t.cpu.lastSubroutine
         out += ` [${t.cpu.activeChip.title}${sub}]`
     }
 
