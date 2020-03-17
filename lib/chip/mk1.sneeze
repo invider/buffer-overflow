@@ -5,8 +5,22 @@ energy:
     5 inc 5 dec sub
     16 over div dup mul swap
 
-    dump
+    0 store
+    1 store
+    1 load
+    0 load
+
+    1 call
+    2 call
+
     5 random 11
+
+summer:
+    add 101 21 sub min
+
+dumper:
+    dump
+    core
 
 left-bumper:
     up 10
