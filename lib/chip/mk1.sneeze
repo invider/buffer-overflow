@@ -15,14 +15,10 @@ energy:
     2 call
 -------------
 
-    -- counter
-    5
-
-    mark
-    dec
-    dup
-    -5
-    jnz
+    4 7 lt
+    8 2 gt
+    4 8 gt
+    dump
 
     5 random 11
 
@@ -33,17 +29,15 @@ dumper:
     dump
     core
 
-left-bumper:
-    up 10
+top-energy:
+    101 mark
+    5 15
 
-right-bumper:
-    down 11
+empty-energy:
+    113 mark 0
 
-top-bumper:
-    left 10
+empty-receiver:
+    123 mark 0
 
-bottom-bumper:
-    right 10
-
-
-
+empty-transponder:
+    133 mark 0
