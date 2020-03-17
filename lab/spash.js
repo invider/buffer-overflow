@@ -26,7 +26,7 @@ function show() {
 
 function draw() {
     fill(env.style.text)
-    font('64px pixel-operator-mono8-bold')
+    font('48px pixel-operator-mono8-bold')
     alignCenter()
     baseMiddle()
 
@@ -35,7 +35,7 @@ function draw() {
 
     const x = rx(1) - 40
     let y = ry(.8)
-    font('32px pixel-operator-mono8-bold')
+    font('24px pixel-operator-mono8-bold')
     alignRight()
     text(env.loc.subtitle, x, y)
     y += 72

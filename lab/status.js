@@ -1,6 +1,6 @@
 const Z = 11
 
-const H = 72
+const H = 64
 const H2 = H/2
 
 function tab(src, targetLength) {
@@ -93,7 +93,7 @@ function draw() {
 
     label += bodyStat(target)
 
-    font('32px coolville')
+    font(env.style.font)
     alignLeft()
     baseMiddle()
     fill(env.style.text)

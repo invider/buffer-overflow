@@ -1,7 +1,7 @@
 
 const Z = 13
 
-const H = 72
+const H = 64
 
 const H2 = H/2
 
@@ -29,10 +29,10 @@ function drawContent() {
         const lead = env.stat.leader === team? '!' : ''
 
         if (team === controller) {
-            font('40px coolville')
+            font(env.style.fontBig)
             fill(env.style.sneeze[team])
         } else {
-            font('32px coolville')
+            font(env.style.font)
             fill(env.style.teams[team])
         }
 
@@ -42,7 +42,7 @@ function drawContent() {
     }
 
     // time
-    font('32px coolville')
+    font(env.style.font)
     fill(env.style.text)
     const time = floor(env.stat.time)
     const min = floor(time / 60)

@@ -4,6 +4,9 @@ const style = {
     pane: '#171715A0',
     text: '#A0A000',
 
+    font: '28px coolville',
+    fontBig: '32px coolville',
+
     focus: hsl(.35, .7, .5),
     selection: hsl(.2, .8, .6),
     control: hsl(.02, .7, .5),
