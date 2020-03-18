@@ -77,6 +77,7 @@ class Bot extends dna.Body {
     }
 
     sneeze() {
+        if (env.stat.gameover) return
         // determine force
         const force = this.transponder
         if (force === 0) return 0
