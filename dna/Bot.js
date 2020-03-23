@@ -41,9 +41,11 @@ class Bot extends dna.Body {
     }
 
     infect(bot, force) {
-        if (this.player) return
+        if (this.team === 0) force *= env.tune.neutralInfectFactor
+        if (this.player) {
+            this.receiver = max(this.receiver - force, 0)
 
-        if (force > this.receiver) {
+        } else if (force > this.receiver) {
 
             const infected = this
             this.receiver = 0

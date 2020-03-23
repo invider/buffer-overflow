@@ -13,6 +13,7 @@ const tune = {
     chargePower: 40,
     rechargePower: 10,
     energyLimit: 100,
+    neutralInfectFactor: 8,
     startEnergy: .5,
 
     minEnergyDrop: 10,
