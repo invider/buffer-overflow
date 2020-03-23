@@ -7,6 +7,6 @@ function fadein() {
 
         onFadeout: function() {
             lab.spash.show()
-        }
+        },
     })
 }

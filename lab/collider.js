@@ -42,6 +42,7 @@ let runs = 0
 let tests = 0
 
 function evo (dt) {
+    if (!lab.world) return
     // go over all entities under the camera
     // and test for collisions
     

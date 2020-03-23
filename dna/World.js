@@ -226,13 +226,14 @@ class World extends dna.SlideCamera {
     }
 
     evo(dt) {
-        if (this.paused) return
         if (!this.gameover) env.stat.time += dt
         this.handleZoom(dt)
 
-        this.evoElements(this.ghost._ls, dt)
-        this.evoElements(this.mob._ls, dt)
-        this.evoElements(this.fx._ls, dt)
+        if (!this.paused && !this.holdon) {
+            this.evoElements(this.ghost._ls, dt)
+            this.evoElements(this.mob._ls, dt)
+            this.evoElements(this.fx._ls, dt)
+        }
 
         if (this.target) this.follow(dt)
     }

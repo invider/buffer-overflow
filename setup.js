@@ -3,5 +3,4 @@ function setup() {
 
     lib.factory.sfx()
     trap('fadein')
-    trap('start')
 }

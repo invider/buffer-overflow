@@ -15,12 +15,14 @@ function show() {
         wait: 3,
         fadein: 1,
         keep: .5,
-        fadeout: 1,
+        fadeout: 2,
 
         onFadeout: function() {
-            lib.util.show()
-            spash.hidden = true
-        }
+            trap('fadeout')
+        },
+        onHidden: function() {
+            lab.world.holdon = false
+        },
     })
 }
 

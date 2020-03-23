@@ -14,7 +14,7 @@ Who is going to profit from this nature's unexpected surprise?
 ExoSurvey and Mining Co. is out of business for more than a decade. Its massive fleet of mining robots is wondering aimlessly on that inhospitable world.
 
 
-But 4 mining companies are found the access to the orbiting control satellite. They were able to capture some robots by uploading custom firmware.
+But 4 mining companies have found the access to the orbiting control satellite. They have been able to capture some robots by uploading custom firmware.
 
 
 The reconfigured mining bots have one crucial ability - Cyber Sneeze. They send a powerful radio-burst to cause buffer overflow and update firmware in the receiving units. All competitors are planning to use cyber sneeze to capture as many robots, as possible, and take control over the mining operations.
@@ -32,6 +32,8 @@ You can move the robot over the planet surface. Discovered energy crystals are a
 The most crucial thing in movement is energy control. When a robot stand still, its transponder is recharging up to the maximum available amount. When the robot walks, the energy slowly moves back to its receiver. The energy accumulated in the transponder is used to sneeze. The energy in the receiver protects the robot from buffer overflows and infection of foreign firmware.
 
 ## Controls
+
+XBox-styled gamepad is supported.
 
 * Movement - cursor keys, WASD or HJKL for the fans of VIM
     * stand still to recharge transponder for the next sneeze
