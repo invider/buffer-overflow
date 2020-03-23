@@ -220,7 +220,7 @@ class Bot extends dna.Body {
 
     drawEnergyBar() {
         if (!env.opt.showEnergyLevel) return
-        if (this.player || this.focus || this.selected) return
+        //if (this.player || this.focus || this.selected) return
 
         const energy = this.getEnergy()/env.tune.energyLimit
         const ex = this.x - this.r - env.style.botBorder

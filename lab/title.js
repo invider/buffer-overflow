@@ -16,8 +16,8 @@ function drawEnergyLevels() {
     const y = H
     let x = 0
 
-    const total = floor(env.stat.energy[env.tune.teams + 1])
-
+    const neutral = floor(env.stat.energy[0])
+    const total = floor(env.stat.energy[env.tune.teams + 1]) - neutral
 
     fill(env.style.teams[0])
     rect(x, y, w, h)
