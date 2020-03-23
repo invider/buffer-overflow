@@ -5,6 +5,9 @@ inject:
     11 0 store
     12 1 store
     13 2 store
+    101 mark
+    dump
+    core
 
 energy:
     5 inc 5 dec sub
@@ -23,7 +26,7 @@ energy:
     4 7 lt
     8 2 gt
     4 8 gt
-    dump
+    --dump
 
     5 random 11
 
@@ -31,8 +34,8 @@ summer:
     add 101 21 sub min
 
 dumper:
-    dump
-    core
+    --dump
+    --ore
 
 top-energy:
     101 mark
