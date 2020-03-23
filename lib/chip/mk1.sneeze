@@ -9,6 +9,11 @@ inject:
     dump
     core
 
+up:     1 4
+left:   2 4
+down:   3 4
+right:  4 5
+
 energy:
     5 inc 5 dec sub
     16 over div dup mul swap
@@ -28,7 +33,7 @@ energy:
     4 8 gt
     --dump
 
-    5 random 11
+    5 random 2
 
 summer:
     add 101 21 sub min

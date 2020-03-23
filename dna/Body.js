@@ -28,7 +28,11 @@ class Body {
         if (this.x < this.r) this.x = w.w - this.r
         if (this.x > w.w - this.r) this.x = this.r
         if (this.y < this.r) this.y = w.h - this.r
-        if (this.y > w.h - this.r) this.y = this.r
+       if (this.y > w.h - this.r) this.y = this.r
+    }
+
+    distTo(target) {
+        return dist(this.x, this.y, target.x, target.y)
     }
 
     kill() {

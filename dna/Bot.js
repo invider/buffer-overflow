@@ -21,8 +21,7 @@ class Bot extends dna.Body {
         this.recharger = env.tune.rechargePower
         this.receiver = env.tune.energyLimit * env.tune.startEnergy
         this.speed = env.tune.botSpeed
-        this.cpu = new lib.arch.CPU()
-        this.cpu.bot = this
+        this.cpu = new lib.arch.CPU(this)
     }
 
     hit(source) {
@@ -267,9 +266,5 @@ class Bot extends dna.Body {
 
     getEnergy() {
         return this.receiver + this.transponder
-    }
-
-    distTo(target) {
-        return dist(this.x, this.y, target.x, target.y)
     }
 }
