@@ -1,6 +1,11 @@
 .chip "mark to one"
 
 -- define energy subroutine
+inject:
+    11 0 store
+    12 1 store
+    13 2 store
+
 energy:
     5 inc 5 dec sub
     16 over div dup mul swap

@@ -118,7 +118,7 @@ class World extends dna.SlideCamera {
 		return (y - this.y)*this.scale + ctx.height/2
 	}
 
-	getViewport = function() {
+	getViewport() {
 		return [
 			this.lx(0),
 			this.ly(0),
