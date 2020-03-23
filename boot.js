@@ -2,7 +2,9 @@
 
 // boot config values
 let base = hsl(.1, 0, 0)
-let content = hsl(.54, 1, .5)
+//let content = hsl(.54, 1, .5)
+//let content = '#68e038'
+let content = hsl(.35, 1, .5)  // emerald green
 let contentLow = hsl(.1, 0, 0)
 let contentErr = hsl(.01, 1, .55) // collider orange
 let fadeBase = hsl(.1, 0, 0)
@@ -14,7 +16,7 @@ let fadeBase = hsl(.1, 0, 0)
 //const COLOR = hsl(.35, 1, .5)
 
 let power = 2
-let hold = 5
+let hold = 3.5
 let fade = 1
 let wait = 0.5
 
@@ -26,7 +28,7 @@ let label = ''
 
 // boot implementation values
 const BASE = width() > height()? height() : width()
-const FBASE = BASE * .05
+const FBASE = BASE * .04
 
 let labelFont = FBASE+'px moon'
 let lowFont = FBASE*.75 + 'px moon'
@@ -34,10 +36,10 @@ let lowFont = FBASE*.75 + 'px moon'
 const R3 = ry(.4)
 const POWERED_BY = 'Powered by Collider.JAM'
 const ERROR = 'Error'
-let poweredByFont = FBASE+'px zekton'
 
 const ACTIVE = 0
-const FADING = 1
+const FADEIN = 1
+const FADEOUT = 2
 const STABLE = 5
 
 const RING = 0
@@ -51,15 +53,15 @@ const DIR = 0
 
 let x = rx(.5)
 let y = ry(.5)
-const R1 = BASE * .1
-const R2 = BASE * .25
+const R1 = BASE * .075
+const R2 = BASE * .2
 
 const SPEED = BASE * 5
 const RSPEED = TAU*2
 const TSPEED = BASE * .5
 const STEP = (R2-R1)/15
 const STEPV = 2
-const W = BASE * .004
+const W = BASE * .003
 
 const FADE = 1.2
 const TEXT_FADEOUT = 2
@@ -131,29 +133,50 @@ function showPoweredBy(s) {
 }
 */
 
-function spawnTextSegment(worm, x, y, dir, msg, delay) {
+function spawnTextSegment(worm, x, y, dir, msg, fadein, keep, fadeout) {
     const sg = {
-        state: ACTIVE,
-        time: -delay,
+        state: FADEIN,
+        time: 0,
+        fadein: fadein? fadein : 0,
+        keep: keep,
+        fadeout: fadeout? fadeout: 0,
         x: x,
         y: y,
         dir: dir,
         msg: msg,
-        delay: delay,
 
         evo: function(dt) {
             if (this.state === DEAD) return
 
             this.time += dt
-            if (this.state === ACTIVE && this.time >= this.delay) this.state = DEAD
+            if (this.state === FADEOUT && this.time >= this.fadeout) this.state = DEAD
         },
+
         draw: function(dt) {
             if (this.state === DEAD) return
 
             save()
-            if (this.time < 0) alpha(1 - abs(this.time)/this.delay)
-            else if (this.state === STABLE) alpha(1)
-            else alpha(1 - this.time/ this.delay)
+            switch(this.state) {
+                case FADEIN:
+                    alpha(min(this.time/this.fadein, 1))
+                    if (this.time >= this.fadein) {
+                        this.time = 0
+                        this.state = ACTIVE
+                    }
+                    break
+
+                case ACTIVE:
+                    alpha(1)
+                    if (this.keep && this.time >= this.keep) {
+                        this.time = 0
+                        this.state = FADEOUT
+                    }
+                    break
+
+                case FADEOUT:
+                    alpha(max(1 - this.time/this.fading, 0))
+                    break
+            }
 
             if (this.font) font(this.font)
             else font(lowFont)
@@ -192,10 +215,10 @@ function spawnLineSegment(worm, x1, y1, x2, y2, onTarget) {
             this.time += dt
             if (this.state === ACTIVE && this.time >= this.targetTime) {
                 this.time = 0
-                this.state = FADING
+                this.state = FADEOUT
                 if (this.onTarget) this.onTarget(this)
             }
-            if (this.state === FADING && this.time >= FADE) {
+            if (this.state === FADEOUT && this.time >= FADE) {
                 this.state = DEAD
             }
         },
@@ -204,7 +227,7 @@ function spawnLineSegment(worm, x1, y1, x2, y2, onTarget) {
             if (this.state === DEAD) return
 
             save()
-            if (this.state === FADING) {
+            if (this.state === FADEOUT) {
                 alpha(1 - this.time/FADE)
             }
 
@@ -240,7 +263,7 @@ function spawnSegment(worm, type, orbit, angle, target) {
         target: target,
 
         onTarget: function() {
-            this.state = FADING
+            this.state = FADEOUT
 
             // spawn next segment
             switch(this.type) {
@@ -315,7 +338,7 @@ function spawnSegment(worm, type, orbit, angle, target) {
             if (this.state === DEAD) return
 
             this.time += dt
-            if (this.state === FADING) {
+            if (this.state === FADEOUT) {
                 this.target -= dt/FADE
                 if (this.target <= 0) this.state = DEAD
                 return
@@ -339,7 +362,7 @@ function spawnSegment(worm, type, orbit, angle, target) {
             if (this.state === DEAD) return
 
             save()
-            if (this.state === FADING) {
+            if (this.state === FADEOUT) {
                 alpha(this.target)
             }
 
@@ -433,7 +456,7 @@ function evoContent(dt) {
     // spawn powered by
     if (!spawnedPoweredBy && time > power) {
         const w = spawnWorm()
-        spawnTextSegment(w, rx(.5), ry(.9), 0, POWERED_BY)
+        spawnTextSegment(w, rx(.5), ry(.9), 0, POWERED_BY, 1)
         spawnedPoweredBy = true
     }
 
@@ -499,6 +522,7 @@ function evoBoot(dt) {
         if (time >= hold) {
             time = 0
             state = 'fading'
+            sfx(res.sfx.chord, .5)
         }
         break;
 

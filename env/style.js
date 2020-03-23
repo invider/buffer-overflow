@@ -3,6 +3,7 @@ const style = {
     border: hsl(.6, .5, .45),
     pane: '#171715A0',
     text: '#A0A000',
+    content: hsl(.35, 1, .5),  // emerald green
 
     font: '28px coolville',
     fontBig: '32px coolville',

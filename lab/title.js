@@ -10,6 +10,30 @@ function drawBackground() {
     rect(0, 0, rx(1), H)
 }
 
+function drawEnergyLevels() {
+    const w = rx(1)
+    const h = env.style.energyBarWidth
+    const y = H
+    let x = 0
+
+    const total = floor(env.stat.energy[env.tune.teams + 1])
+
+
+    fill(env.style.teams[0])
+    rect(x, y, w, h)
+
+    for (let team = 1; team <= env.tune.teams; team ++) {
+        
+        const energy = floor(env.stat.energy[team])
+        const share = energy/total
+        const ew = w * share
+
+        fill(env.style.teams[team])
+        rect(x, y, ew, h)
+        x += ew
+    }
+}
+
 function drawContent() {
 
     alignCenter()
@@ -25,7 +49,6 @@ function drawContent() {
     for (let team = 1; team <= env.tune.teams; team++) {
         const name = env.loc.teamName[team]
         const pop = env.stat.population[team]
-        const energy = floor(env.stat.energy[team])
         const lead = env.stat.leader === team? '!' : ''
 
         if (team === controller) {
@@ -36,7 +59,7 @@ function drawContent() {
             fill(env.style.teams[team])
         }
 
-        const tag = `${name}: ${pop}/${energy}${lead}`
+        const tag = `${name}: ${pop}${lead}`
         text(tag, rx(ax), H2)
         ax += sx
     }
@@ -53,4 +76,5 @@ function drawContent() {
 function draw() {
     this.drawBackground()
     this.drawContent()
+    this.drawEnergyLevels()
 }

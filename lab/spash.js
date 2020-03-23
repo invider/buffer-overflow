@@ -25,13 +25,12 @@ function show() {
 }
 
 function draw() {
-    fill(env.style.text)
+    fill(env.style.content)
     font('48px pixel-operator-mono8-bold')
     alignCenter()
     baseMiddle()
 
     text(env.loc.title, rx(.5), ry(.5))
-
 
     const x = rx(1) - 40
     let y = ry(.8)

@@ -75,7 +75,8 @@ function drawEnergyLevel(bot) {
     rect(x, y, w * energy, h)
 
     fill(env.style.energyHi)
-    rect(x + w*(energy-charge), y, w * charge, h)
+    //rect(x + w*(energy-charge), y, w * charge, h)
+    rect(x, y, w * charge, h)
 }
 
 function draw() {

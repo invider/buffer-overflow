@@ -190,6 +190,7 @@ class Bot extends dna.Body {
             this.receiver += q
 
         } else {
+            if (this.team === 0) return // neutrals dont sneeze
             // transfer to transponder
             let q = this.charger * dt
             if (this.receiver < q) q = this.receiver
