@@ -215,6 +215,10 @@ class Bot extends dna.Body {
             this.timer = this.fq
         }
 
+        if (env.config.trace === 'triggers') {
+            this.cpu.sensors.scan()
+        }
+
         this.moveFlag = 0
     }
 
