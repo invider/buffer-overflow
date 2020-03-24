@@ -271,6 +271,15 @@ class Bot extends dna.Body {
                     this.cpu.lastSubroutine : 'none'
                 text(routine, x, y)
                 break
+
+            case 'triggers':
+                const t = this.cpu.sensors.trigger
+                const s = '' + t['up']
+                    + ' ' + t['left']
+                    + ' ' + t['down']
+                    + ' ' + t['right']
+                text(s, x, y)
+                break
         }
     }
 

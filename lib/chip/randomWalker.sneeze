@@ -2,10 +2,10 @@
 
 -- define energy subroutine
 
-up:     1 5
-left:   2 4
-down:   3 6
-right:  4 5
+up:     1 4 4 random add
+left:   2 4 4 random add
+down:   3 4 4 random add
+right:  4 4 4 random add
 
 energy:
     -- wait or random direction with priority 1
