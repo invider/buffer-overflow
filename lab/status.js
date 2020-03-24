@@ -71,10 +71,11 @@ function drawEnergyLevel(bot) {
     fill(env.style.energyLow)
     rect(x, y, w, h)
 
-    fill(env.style.teams[bot.team])
+    //fill(env.style.teams[bot.team])
+    fill(env.style.energyHi)
     rect(x, y, w * energy, h)
 
-    fill(env.style.energyHi)
+    fill(env.style.energyCharge)
     //rect(x + w*(energy-charge), y, w * charge, h)
     rect(x, y, w * charge, h)
 }

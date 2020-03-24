@@ -18,6 +18,7 @@ const style = {
     energyBarWidth: 16,
     energyLow: '#404000',
     energyHi: '#a0a000',
+    energyCharge: '#c54000',
 
     teams: [
         hsl(.5,  0, .6),

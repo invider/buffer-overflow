@@ -223,6 +223,8 @@ class Bot extends dna.Body {
         //if (this.player || this.focus || this.selected) return
 
         const energy = this.getEnergy()/env.tune.energyLimit
+        const charge = this.transponder/env.tune.energyLimit
+
         const ex = this.x - this.r - env.style.botBorder
         const ey = this.y - this.r - env.style.levelGap
         const elen = (this.r + env.style.botBorder) * 2
@@ -230,8 +232,12 @@ class Bot extends dna.Body {
         lineWidth(2)
         stroke(env.style.energyLow)
         line(ex, ey, ex + elen, ey)
+
         stroke(env.style.energyHi)
         line(ex, ey, ex + elen * energy, ey)
+
+        stroke(env.style.energyCharge)
+        line(ex, ey, ex + elen * charge, ey)
     }
 
     drawBorders() {
