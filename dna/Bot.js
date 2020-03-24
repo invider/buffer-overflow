@@ -256,6 +256,24 @@ class Bot extends dna.Body {
         }
     }
 
+    drawDebug() {
+        const x = this.x
+        const y = this.y + this.r + env.style.botBorder
+
+        baseTop()
+        alignCenter()
+        font(env.style.fontDebug)
+        fill(env.style.teams[this.team])
+
+        switch(env.config.trace) {
+            case 'subroutine':
+                const routine = this.cpu.lastSubroutine?
+                    this.cpu.lastSubroutine : 'none'
+                text(routine, x, y)
+                break
+        }
+    }
+
     drawBot() {
         //fill(env.style.teams[this.team])
         //rect(this.x - this.r, this.y - this.r, this.r * 2, this.r * 2)
@@ -269,6 +287,7 @@ class Bot extends dna.Body {
         this.drawBot()
         this.drawEnergyBar()
         this.drawBorders()
+        if (env.config.trace) this.drawDebug()
     }
 
     getEnergy() {

@@ -7,6 +7,7 @@ const style = {
 
     font: '28px coolville',
     fontBig: '32px coolville',
+    fontDebug: '12px coolville',
 
     focus: hsl(.35, .7, .5),
     selection: hsl(.2, .8, .6),
