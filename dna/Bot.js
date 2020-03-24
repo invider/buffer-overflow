@@ -26,8 +26,9 @@ class Bot extends dna.Body {
 
     hit(source) {
         if (source instanceof dna.EnergyDroplet) {
+            if (this.receiver + this.transponder >= env.tune.energyLimit) return
             this.receiver += source.charge
-            if ((this.receiver+ this.transponder) > env.tune.energyLimit) {
+            if ((this.receiver + this.transponder) > env.tune.energyLimit) {
                 this.receiver = env.tune.energyLimit - this.transponder
             }
             // log(`${this.name} energy: +${source.charge}(${round(this.receiver)})`)

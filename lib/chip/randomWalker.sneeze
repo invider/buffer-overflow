@@ -1,6 +1,12 @@
 .chip "eratic"
 
 -- define energy subroutine
+
+up:     1 5
+left:   2 4
+down:   3 6
+right:  4 5
+
 energy:
     -- wait or random direction with priority 1
     5 random 1
